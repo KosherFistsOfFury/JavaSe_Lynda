@@ -1,6 +1,7 @@
 package packt.selenium.chap3_9.pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,8 +23,9 @@ public class Google {
         }
     }
     public GoogleSearchPage goToSearchPage(){
-        driver.findElement(By.id("lst-ib")).sendKeys("Mastering Selenium Testing Tools");
-        driver.findElement(By.name("btnG")).click();
+        driver.findElement(By.id("lst-ib")).sendKeys("Mastering Selenium Testing Tools" + Keys.ENTER);
+        //driver.findElement(By.id("lst-ib")).sendKeys(Keys.ENTER);
+        //driver.findElement(By.name("btnK")).click(); //Any of the three lines work: ^2 sans ' + Keys.ENTER', ^2 + ^1, or ^2 + this line
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("resultStats")));
         return new GoogleSearchPage(driver);
